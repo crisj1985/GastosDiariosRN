@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TextInput, FlatList } from 'react-native';
+import { StyleSheet, Text, View, TextInput, FlatList, TouchableHighlight } from 'react-native';
 import DatePicker from "react-native-datepicker";
 import { Button } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { recuperarGastos } from "./Gastos";
+import { recuperarGastos, agregarIngreso, actualizarIngreso } from "./Gastos";
 
 export default class App extends Component {
 
@@ -11,24 +11,105 @@ export default class App extends Component {
     super();
     this.state = {
       gastos: recuperarGastos(),
+      id:undefined,
+      ingreso:0,
+      categoria:'',
+      descripcion:'',
+      mostrarActualizar:false
+
     };
+  }
+
+  fnRepintar =  () => {
+    this.setState({ gastos: recuperarGastos()})
+  }
+  fnLimpiar = () => {
+    this.setState({
+      id: null,
+      ingreso: 0,
+      categoria: '',
+      descripcion: '',
+
+    })
   }
 
   render(){
     return (
       <View style={styles.container}>
         <Text style={{ alignItems: "stretch" }}>Ingresos</Text>
-        <TextInput title="Ingreso" placeholder="Ingreso" />
-        <TextInput title="Categoria" placeholder="Categoria" />
-        <TextInput title="Descripcion" placeholder="Descripcion" />
-        <Button title="Guardar" />
-        <Button title="Actualizar" />
+        <TextInput
+          title="Id"
+          placeholder="Id"
+          value={this.state.id}
+          editable = {false}
+        />
+        <TextInput 
+          title="Ingreso" 
+          placeholder="Ingreso" 
+          value = {this.state.ingreso} 
+          onChangeText = {(txt)=>{this.setState({ingreso:txt})}}
+        />
+          
+        <TextInput 
+          title="Categoria" 
+          placeholder="Categoria"
+          value={this.state.categoria} 
+          onChangeText={(txt) => { this.setState({ categoria: txt }) }}
+          />
+          
+        <TextInput 
+          title="Descripcion" 
+          placeholder="Descripcion" 
+          value={this.state.descripcion} 
+          onChangeText={(txt) => { this.setState({ descripcion: txt }) }}
+          />
+        {!this.state.mostrarActualizar 
+         ?
+            <Button
+              title="Guardar"
+              onPress={() => {
+                agregarIngreso({
+                  Ingreso: Number(this.state.ingreso),
+                  Categoria: this.state.categoria,
+                  Descripcion: this.state.descripcion
+                });
+                this.fnRepintar();
+                this.fnLimpiar();
+              }}
+            />
+          :
+            <Button 
+              title="Actualizar" 
+            onPress={() => {
+              agregarIngreso({
+                Id: Number(this.state.id),
+                Ingreso: Number(this.state.ingreso),
+                Categoria: this.state.categoria,
+                Descripcion: this.state.descripcion
+              });
+              this.fnRepintar();
+              this.setState({mostrarActualizar:false});
+              this.fnLimpiar();
+
+              }}  
+            />
+        } 
+        
+        
         <FlatList
           data={this.state.gastos}
           renderItem={({ item }) => (
-            <Text>
-              {item.Ingreso}  {item.Categoria}  {item.Descripcion}
-            </Text>
+            <TouchableHighlight 
+              onPress={() => {
+                this.setState({
+                  id:item.Id.toString(),
+                  ingreso: item.Ingreso.toString(),
+                  categoria: item.Categoria,
+                  descripcion: item.Descripcion,
+                  mostrarActualizar:true})}}>
+              <Text>{item.Ingreso}  {item.Categoria}  {item.Descripcion}</Text>
+            </TouchableHighlight>
+              
           )}
           keyExtractor={(item) => item.Id}
         />
