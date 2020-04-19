@@ -28,14 +28,11 @@
      return -1;
  };
 
- //  const actualizarIngreso = (ingreso) => {
- //      let indice = buscarIngreso(ingreso);
- //      if (indice != -1) {
- //          Gastos[indice].Ingreso = ingreso.Ingreso;
- //          Gastos[indice].Categoria = ingreso.Categoria;
- //          Gastos[indice].Descripcion = ingreso.Descripcion;
- //      }
- //  }
+ const eliminarIngreso = (ingreso) => {
+     let indice = buscarIngreso(ingreso);
+     if (indice != -1)
+         Gastos.splice(indice, 1);
+ }
 
 
- export { recuperarGastos, agregarIngreso };
+ export { recuperarGastos, agregarIngreso, eliminarIngreso };
