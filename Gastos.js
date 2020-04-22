@@ -34,5 +34,27 @@
          Gastos.splice(indice, 1);
  }
 
+ const CategoriasIngresos = () => ["Prestamo", "Sueldo", "Ventas", "Proyectos"];
+ const CategoriasGastos = () => [
+     "Comida",
+     "Ropa",
+     "Diversion",
+     "Educacion",
+     "Gasolina",
+     "Servicios Basicos",
+     "Medicinas",
+     "Consulta Medica",
+     "Transporte",
+     "Hotel",
+     "Mercancia",
+     "Otro",
+ ];
 
- export { recuperarGastos, agregarIngreso, eliminarIngreso };
+
+ export {
+     recuperarGastos,
+     agregarIngreso,
+     eliminarIngreso,
+     CategoriasIngresos,
+     CategoriasGastos,
+ };

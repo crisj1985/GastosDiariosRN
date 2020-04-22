@@ -85,6 +85,7 @@ export class Ingreso extends Component {
 
                        <ModalCategoria
                          valueCategoria={this.fnValueCategoria}
+                         tipo='Ingresos'
                        />
 
                        <Input

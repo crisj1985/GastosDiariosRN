@@ -85,6 +85,7 @@ export  class Gasto extends Component {
 
                 <ModalCategoria
                     valueCategoria={this.fnValueCategoria}
+                    tipo='Gastos'
                 />
 
                 <Input

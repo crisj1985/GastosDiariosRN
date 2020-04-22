@@ -6,24 +6,41 @@ import {
   Picker,
   StyleSheet,
   TouchableHighlight,
+  FlatList,
 } from "react-native";
 import {  Input } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
+import {CategoriasGastos,CategoriasIngresos} from './Gastos'
 
 export  class ModalCategoria extends Component {
 
+  
 
     constructor(){
         super();
     
         this.state = {
-          modalVisible:false,
-          categoria:''
+          modalVisible: false,
+          categoria: "",
+          ItemsIngresos: CategoriasIngresos(),
+          ItemsGastos: CategoriasGastos(),
         };
     }
+
+     fnDevolverCategoria = (value) => {
+       switch(value){
+         case 'Ingresos':
+            return this.state.ItemsIngresos.map((item) => <Picker.Item label={item} value={item} />)
+            break;
+            case 'Gastos':
+            return this.state.ItemsGastos.map((item) => <Picker.Item label={item} value={item} />)
+            break;
+       }
+       
+     }
     render() {
 
-            const { valueCategoria } = this.props;
+            const { valueCategoria, tipo } = this.props;
         return (
           <View>
             <Modal
@@ -47,9 +64,10 @@ export  class ModalCategoria extends Component {
                       valueCategoria(itemValue);
                     }}
                   >
-                    <Picker.Item label="Prestamo" value="Prestamo" />
-                    <Picker.Item label="Sueldo" value="Sueldo" />
-                    <Picker.Item label="Ventas" value="Ventas" />
+                    
+                    {
+                      this.fnDevolverCategoria(tipo)
+                    }
                   </Picker>
                 </View>
               </View>
