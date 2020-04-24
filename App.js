@@ -5,6 +5,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import { Ingreso } from "./Screens/IngresosScreen";
 import { Gasto } from "./Screens/GastosScreen";
 import { Home } from "./Screens/Home";
+import { Listado } from "./Screens/ListaGastos";
 import { Icon } from "react-native-elements";
 
 // let NavStack = createStackNavigator();
@@ -17,12 +18,12 @@ render(){
       <NavTab.Navigator initialRouteName="StackHome">
         <NavTab.Screen
           options={{
-            tabBarLabel: "Gastos Diarios",
+            tabBarLabel: "Listado",
             tabBarIcon: () => {
               return (
                 <Icon
                   reverse
-                  name="home"
+                  name="list"
                   type="font-awesome"
                   color="#517fa4"
                   size={16}
@@ -30,8 +31,8 @@ render(){
               );
             },
           }}
-          name="StackHome"
-          component={Home}
+          name="Listado"
+          component={Listado}
         />
         <NavTab.Screen
           options={{

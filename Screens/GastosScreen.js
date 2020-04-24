@@ -136,19 +136,6 @@ export  class Gasto extends Component {
                             }
                         />
                     )}
-
-                <FlatList
-                    data={this.state.gastos}
-                    renderItem={({ item }) => (
-                        <ItemGasto
-                            gasto={item}
-                            seleccionar={this.fnSeleccionar}
-                            limpiar={this.fnLimpiar}
-                            repintar={this.fnRepintar}
-                        />
-                    )}
-                    keyExtractor={(item) => item.Id}
-                />
             </View>
         );
     }
