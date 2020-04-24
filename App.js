@@ -15,7 +15,7 @@ export default class App extends Component {
 render(){
   return (
     <NavigationContainer>
-      <NavTab.Navigator initialRouteName="StackHome">
+      <NavTab.Navigator initialRouteName="Listado">
         <NavTab.Screen
           options={{
             tabBarLabel: "Listado",
