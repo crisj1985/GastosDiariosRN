@@ -12,6 +12,8 @@ constructor (){
     }
 }
 
+    irLogin = () => { this.props.navigation.goBack(); }
+
     render() {
 
         const { mail, password} = this.state;
@@ -31,7 +33,7 @@ constructor (){
                     onChangeText={(txt) => { this.setState({ password: txt }) }}
                 />
                 <Button title="Registrar Usuario" onPress={() => {
-
+                    fnCrearUsuarioFireBase(mail, password, this.irLogin);
                 }} />
             </View>
         )
