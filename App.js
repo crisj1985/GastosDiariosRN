@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import { Ingreso } from "./Screens/IngresosScreen";
 import { Gasto } from "./Screens/GastosScreen";
-import { Home } from "./Screens/Home";
+import { Login } from "./Screens/Login";
 import { Listado } from "./Screens/ListaGastos";
 import { Icon } from "react-native-elements";
 
@@ -34,42 +34,6 @@ TabHome = () => {
         name="Listado"
         component={Listado}
       />
-      {/* <NavTab.Screen
-        options={{
-          tabBarLabel: "Agregar Ingresos",
-          tabBarIcon: () => {
-            return (
-              <Icon
-                reverse
-                name="plus"
-                type="font-awesome"
-                color="#517fa4"
-                size={16}
-              />
-            );
-          },
-        }}
-        name="StackIngresos"
-        component={Ingreso}
-      />
-      <NavTab.Screen
-        options={{
-          tabBarLabel: "Agregar Gastos",
-          tabBarIcon: () => {
-            return (
-              <Icon
-                reverse
-                name="minus"
-                type="font-awesome"
-                color="#517fa4"
-                size={16}
-              />
-            );
-          },
-        }}
-        name="StackGastos"
-        component={Gasto}
-      /> */}
     </NavTab.Navigator>
   );
 }
@@ -99,11 +63,19 @@ StackHome = () => {
 
 
 export default class App extends Component {
+constructor (){
+  super();
+  this.state={
+    logueado:false
+  }
+}
+
 render(){
   return (
     <NavigationContainer>
       <NavDrawer.Navigator initialRouteName="Home">
         <NavDrawer.Screen name="Home" component={StackHome}></NavDrawer.Screen>
+        <NavDrawer.Screen name="Login" component={Login}></NavDrawer.Screen>
       </NavDrawer.Navigator>
     </NavigationContainer>
   );
