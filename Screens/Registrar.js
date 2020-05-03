@@ -1,29 +1,28 @@
-
 import React, { Component } from 'react'
 import { Text, View, StyleSheet} from 'react-native'
-import { Input,Button } from 'react-native-elements';
+import { Input,Button } from 'react-native-elements'
+import { fnCrearUsuarioFireBase} from '../Servicios/ServiciosLogin'
 
-export class Login extends Component {
-
-    constructor(){
-        super();
-        this.state={
-            mail:"",
-            password:""
-        }
+export  class Registrar extends Component {
+constructor (){
+    super();
+    this.state = {
+        mail: "",
+        password: ""
     }
+}
 
     render() {
+
         const { mail, password} = this.state;
-        const { navigation} = this.props
         return (
             <View style={styles.container}>
-                <Text>Login</Text>
+                <Text>Registrar usuario</Text>
                 <Input
                     label="E-mail"
                     placeholder="E-mail"
                     value={mail}
-                    onChangeText={(txt)=>{this.setState({mail:txt})}} 
+                    onChangeText={(txt) => { this.setState({ mail: txt }) }}
                 />
                 <Input
                     label="Password"
@@ -31,15 +30,8 @@ export class Login extends Component {
                     value={password}
                     onChangeText={(txt) => { this.setState({ password: txt }) }}
                 />
-                <Button
-                    title="Ingresar"
-                    onPress={() => {
-                    }}
-                />
-                <Button title="Registrar" onPress={() => {
-                    navigation.navigate(
-                        "Registro"
-                    );
+                <Button title="Registrar Usuario" onPress={() => {
+
                 }} />
             </View>
         )
