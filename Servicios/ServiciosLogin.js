@@ -13,3 +13,16 @@ export const fnCrearUsuarioFireBase = async(email, pass, fnIrLogin) => {
         console.log("Error! " + error.message);
     }
 }
+
+export const fnValidarIngreso = async(email, pass) => {
+
+    try {
+        let respuesta = await firebase
+            .auth()
+            .signInWithEmailAndPassword(email, pass)
+        Alert.alert("Usuario registrado correctamente");
+    } catch (error) {
+        Alert.alert("Error! " + error.message);
+    }
+
+}

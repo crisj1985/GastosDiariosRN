@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet} from 'react-native'
 import { Input,Button } from 'react-native-elements';
+import { fnValidarIngreso} from '../Servicios/ServiciosLogin'
 
 export class Login extends Component {
 
@@ -34,6 +35,7 @@ export class Login extends Component {
                 <Button
                     title="Ingresar"
                     onPress={() => {
+                        fnValidarIngreso(mail,password);
                     }}
                 />
                 <Button title="Registrar" onPress={() => {
