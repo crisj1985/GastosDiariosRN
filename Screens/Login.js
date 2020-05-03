@@ -43,6 +43,11 @@ export class Login extends Component {
                         "Registro"
                     );
                 }} />
+                <Button title="Recuperar Clave" onPress={() => {
+                    navigation.navigate(
+                        "CambiarPass"
+                    );
+                }} />
             </View>
         )
     }

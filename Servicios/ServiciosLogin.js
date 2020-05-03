@@ -36,3 +36,16 @@ export const SingOut = async() => {
         Alert.alert("Error! " + error.message);
     }
 }
+
+export const recuperarClave = async(mail, fnIrLogin) => {
+
+    try {
+        await firebase
+            .auth()
+            .sendPasswordResetEmail(mail)
+        Alert.alert("Ingrese a su correo para restaurar la clave");
+        fnIrLogin();
+    } catch (error) {
+        Alert.alert("Error! " + error.message);
+    }
+}

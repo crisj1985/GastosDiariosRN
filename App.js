@@ -9,6 +9,7 @@ import { Login } from "./Screens/Login";
 import { Listado } from "./Screens/ListaGastos";
 import { Registrar } from "./Screens/Registrar";
 import { CerrarSesion } from "./Screens/CerrarSesion";
+import { CambiarClave } from "./Screens/CambiarClave";
 import { Icon } from "react-native-elements";
 import { cargarConfiguration} from './Servicios/FirebaseConfig';
 import firebase from "firebase";
@@ -104,6 +105,7 @@ render(){
         <NavDrawer.Navigator>
            <NavDrawer.Screen name="Login" component={Login}></NavDrawer.Screen>
             <NavDrawer.Screen name="Registro" component={Registrar}></NavDrawer.Screen>
+          <NavDrawer.Screen name="CambiarPass" component={CambiarClave}></NavDrawer.Screen>
         </NavDrawer.Navigator>
       }
       </NavigationContainer>
