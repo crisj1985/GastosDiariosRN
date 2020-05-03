@@ -10,7 +10,7 @@ import { Listado } from "./Screens/ListaGastos";
 import { Registrar } from "./Screens/Registrar";
 import { Icon } from "react-native-elements";
 import { cargarConfiguration} from './Servicios/FirebaseConfig';
-// import firebase from "firebase";
+import firebase from "firebase";
 
 let NavStack = createStackNavigator();
 let NavTab = createBottomTabNavigator();
@@ -74,6 +74,16 @@ constructor (){
 
 if(!global.estaConfigurado)
   cargarConfiguration();
+
+  firebase.auth().onAuthStateChanged((usuario) => {
+    if (usuario) {
+      global.mailUsuario = usuario.email;
+      this.setState({ logueado: true })
+    }
+    else
+      this.setState({ logueado: false })
+
+  })
 
 }
 
