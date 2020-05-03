@@ -8,6 +8,7 @@ import { Gasto } from "./Screens/GastosScreen";
 import { Login } from "./Screens/Login";
 import { Listado } from "./Screens/ListaGastos";
 import { Registrar } from "./Screens/Registrar";
+import { CerrarSesion } from "./Screens/CerrarSesion";
 import { Icon } from "react-native-elements";
 import { cargarConfiguration} from './Servicios/FirebaseConfig';
 import firebase from "firebase";
@@ -97,6 +98,7 @@ render(){
         ?
         (<NavDrawer.Navigator initialRouteName="Home">
           <NavDrawer.Screen name="Home" component={StackHome}></NavDrawer.Screen>
+          <NavDrawer.Screen name="CerrarSesion" component={CerrarSesion}></NavDrawer.Screen>
         </NavDrawer.Navigator>)
         :
         <NavDrawer.Navigator>

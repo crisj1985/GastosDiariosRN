@@ -26,3 +26,13 @@ export const fnValidarIngreso = async(email, pass) => {
     }
 
 }
+export const SingOut = async() => {
+
+    try {
+        await firebase
+            .auth()
+            .signOut()
+    } catch (error) {
+        Alert.alert("Error! " + error.message);
+    }
+}
